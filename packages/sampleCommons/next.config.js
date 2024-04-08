@@ -21,6 +21,16 @@ const withMDX = require('@next/mdx')({
 const nextConfig = {
   output: 'standalone',
   reactStrictMode: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'www.cancerresearchuk.org',
+        port: '',
+        pathname: '/sites/default/files/aced_website_header.jpg',
+      },
+    ],
+  },
   experimental: {
     esmExternals: true,
   },

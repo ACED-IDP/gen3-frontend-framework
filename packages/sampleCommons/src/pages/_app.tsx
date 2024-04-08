@@ -9,9 +9,12 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import 'graphiql/graphiql.css';
 import '@graphiql/react/dist/style.css';
 import { setDRSHostnames } from '@gen3/core';
+//import dynamic from 'next/dynamic';
 
+//const sessionConfig = dynamic(() =>  import('../../config/session.json'));
+//const modalsConfig = dynamic(() => import('../../config/modals.json'));
+//const drsHostnames = dynamic(() => import('../../config/drsHostnames.json'));
 
-// TODO: This can be done in a better way using newer NextJS features
 import sessionConfig from '../../config/session.json';
 import modalsConfig from '../../config/modals.json';
 import drsHostnames from '../../config/drsHostnames.json';
