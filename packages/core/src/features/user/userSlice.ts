@@ -15,6 +15,7 @@ import { selectCSRFToken } from '../gen3';
 
 
 
+
 export interface Gen3UserLoginResponse<T> {
   readonly data?: T;
   readonly error?: string;
