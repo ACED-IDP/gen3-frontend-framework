@@ -23,6 +23,8 @@ export const gen3Api = coreCreateApi({
     baseUrl: `${GEN3_API}`,
     prepareHeaders: (headers, { getState }) => {
       const csrfToken = selectCSRFToken(getState() as CoreState);
+
+      console.log("gen3Api csrf: ", csrfToken);
       headers.set('Content-Type', 'application/json');
 
       let accessToken = undefined;
@@ -40,6 +42,7 @@ export const gen3Api = coreCreateApi({
     getCSRF: builder.query<CSRFToken, void>({
       query: () => '_status',
       transformResponse: (response: JSONObject): CSRFToken => {
+        console.log("gen3Api getCSRF: ", response);
         return { csrfToken: response['csrf'] as string };
       },
     }),
