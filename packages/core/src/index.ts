@@ -8,6 +8,7 @@ import {
   GEN3_AUTHZ_API,
   GEN3_REDIRECT_URL,
   GEN3_WORKSPACE_STATUS_API,
+  GEN3_SUBMISSION_API,
   Accessibility,
 } from './constants';
 import { type CoreState } from './reducers';
@@ -32,7 +33,7 @@ export * from './features/guppy';
 export * from './features/aiSearch';
 export * from './features/workspaces';
 export * from './features/grip';
-
+export * from './features/submission';
 
 export {
   type CoreState,
@@ -45,5 +46,6 @@ export {
   GEN3_AUTHZ_API,
   GEN3_REDIRECT_URL,
   GEN3_WORKSPACE_STATUS_API,
+  GEN3_SUBMISSION_API,
   Accessibility,
 };
