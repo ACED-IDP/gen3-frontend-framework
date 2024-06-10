@@ -45,7 +45,21 @@ const FacetSortPanel: React.FC<FacetSortPanelProps> = ({
 }: FacetSortPanelProps) => {
   const liveRegionRef = useRef<any>(null);
   const [sortingStatus, setSortingStatus] = useState('');
+
   useEffect(() => {
+    if (sortType.type !== 'value' || sortType.direction !== 'asc') {
+      const defaultSort: SortType = {
+        type: 'value',
+        direction: 'dsc',
+      };
+      setSort(defaultSort);
+      setSortingStatus(
+        sortTypeToAriaDescription(defaultSort, valueLabel, field),
+      );
+    } else {
+      setSortingStatus(sortTypeToAriaDescription(sortType, valueLabel, field));
+    }
+
     if (sortingStatus && liveRegionRef?.current) {
       liveRegionRef.current.textContent = sortingStatus;
     }

@@ -2,17 +2,13 @@
   {
     "tabTitle": "Patient",
     "charts": {
-      "project_id": {
+      "code": {
         "chartType": "fullPie",
-        "title": "project_id"
+        "title": "Code"
       },
-      "gender": {
+      "value_normalized": {
         "chartType": "fullPie",
-        "title": "gender"
-      },
-      "maritalStatus": {
-        "chartType": "donut",
-        "title": "maritalStatus"
+        "title": "Value"
       }
     },
     "filters": {
@@ -21,12 +17,14 @@
           "title": "Patient",
           "fields": [
             "project_id",
-            "us_core_race",
-            "us_core_ethnicity",
-            "gender",
-            "maritalStatus",
-            "quality_adjusted_life_years",
-            "disability_adjusted_life_years"
+            "code",
+            "value_normalized",
+            "category",
+            "patient_us_core_race",
+            "patient_us_core_ethnicity",
+            "patient_us_core_birthsex",
+            "identifier",
+            "subject"
           ]
         }
       ]
@@ -36,75 +34,14 @@
       "fields": [
         "id",
         "project_id",
-        "us_core_race",
-        "us_core_ethnicity",
-        "gender",
-        "maritalStatus",
-        "quality_adjusted_life_years",
-        "disability_adjusted_life_years"
-      ]
-    },
-    "guppyConfig": {
-      "dataType": "patient",
-      "fieldMapping": [
-        {
-          "field": "quality_adjusted_life_years",
-          "name": "quality_adjusted_life_years"
-        },
-        {
-          "field": "disability_adjusted_life_years",
-          "name": "disability_adjusted_life_years"
-        }
-      ],
-      "nodeCountTitle": "Patients",
-      "manifestMapping": {
-        "resourceIndexType": "Patient",
-        "resourceIdField": "id",
-        "referenceIdFieldInResourceIndex": "id",
-        "referenceIdFieldInDataIndex": "id"
-      },
-      "accessibleFieldCheckList": [
-        "project_id"
-      ],
-      "accessibleValidationField": "project_id"
-    }
-  },
-  {
-    "tabTitle": "Observation",
-    "charts": {
-      "project_id": {
-        "chartType": "fullPie",
-        "title": "Project"
-      },
-      "code": {
-        "chartType": "fullPie",
-        "title": "Code"
-      },
-      "valueString": {
-        "chartType": "fullPie",
-        "title": "Value"
-      }
-    },
-    "filters": {
-      "tabs": [
-        {
-          "title": "Observation",
-          "fields": [
-            "project_id",
-            "code",
-            "valueString"
-          ]
-        }
-      ]
-    },
-    "table": {
-      "enabled": true,
-      "fields": [
-        "patient_id",
-        "project_id",
-        "category",
         "code",
-        "valueString"
+        "subject",
+        "value_normalized",
+        "category",
+        "patient_us_core_race",
+        "patient_us_core_ethnicity",
+        "patient_us_core_birthsex",
+        "identifier"
       ]
     },
     "guppyConfig": {
@@ -126,13 +63,13 @@
   {
     "tabTitle": "File",
     "charts": {
-      "data_type": {
+      "category": {
+        "chartType": "fullPie",
+        "title": "File Category"
+      },
+      "type": {
         "chartType": "fullPie",
         "title": "File Type"
-      },
-      "data_format": {
-        "chartType": "fullPie",
-        "title": "File Format"
       }
     },
     "filters": {
@@ -141,8 +78,11 @@
           "title": "File",
           "fields": [
             "project_id",
-            "data_type",
-            "data_format"
+            "category",
+            "type",
+            "title",
+            "subject",
+            "contentType"
           ]
         }
       ]
@@ -150,35 +90,42 @@
     "table": {
       "enabled": true,
       "fields": [
-        "project_id",
-        "patient_id",
-        "object_id",
-        "author",
-        "content_attachment_url",
-        "category",
-        "date",
-        "data_type",
-        "data_format",
-        "file_name",
-        "content_attachment_size",
         "id",
-        "status",
-        "type_coding"
-      ]
+        "title",
+        "subject",
+        "source_url",
+        "md5",
+        "size",
+        "contentType",
+        "creation",
+        "url",
+        "category"
+      ],
+      "columns": {
+        "id": {
+          "title": "id",
+          "type": "link",
+          "cellRenderFunction": "default",
+          "params": {
+            "baseURL": "user/data/download/"
+          },
+          "width": 200
+        }
+      }
     },
     "guppyConfig": {
       "dataType": "file",
       "fieldMapping": [
         {
-          "field": "object_id",
+          "field": "id",
           "name": "Download ID"
         },
         {
-          "field": "file_name",
+          "field": "title",
           "name": "Name"
         },
         {
-          "field": "data_type",
+          "field": "type",
           "name": "Type"
         },
         {
