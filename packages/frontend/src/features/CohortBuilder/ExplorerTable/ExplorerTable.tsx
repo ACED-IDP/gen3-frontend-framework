@@ -5,6 +5,9 @@ import {
   selectIndexFilters,
   useCoreSelector,
   useGetRawDataAndTotalCountsQuery,
+  useCoreDispatch,
+  showModal,
+  Modals
 } from '@gen3/core';
 import {
   MantineReactTable,
@@ -59,6 +62,7 @@ const ExplorerTable = ({ index, tableConfig }: ExplorerTableProps) => {
   });
 
   const [sorting, setSorting] = useState<MRT_SortingState>([]);
+  const coreDispatch = useCoreDispatch();
 
   const cols = useDeepCompareMemo(() => {
     // setup table columns at the same time
@@ -116,6 +120,12 @@ const ExplorerTable = ({ index, tableConfig }: ExplorerTableProps) => {
             }) as Record<string, 'desc' | 'asc'>[])
           : undefined,
     });
+
+  const handleRowClick = async (fileId: string) => {
+    // TODO: Fetch file data from the backend
+    console.info("DEBUG: fileId:", fileId);
+    coreDispatch(showModal({ modal: Modals.FileInfoModal }));
+  };
 
   const { totalRowCount, limitLabel } = useDeepCompareMemo(() => {
     const pageLimit =
@@ -185,6 +195,7 @@ const ExplorerTable = ({ index, tableConfig }: ExplorerTableProps) => {
     mantineTableBodyRowProps: ({ row }) => ({
       onClick: (event) => {
         console.info(event, row.id);
+        coreDispatch(showModal({ modal: Modals.FileInfoModal }));
       },
       sx: {
         cursor: 'pointer', //you might want to change the cursor too when adding an onClick

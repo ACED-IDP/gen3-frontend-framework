@@ -12,6 +12,7 @@ import {
 } from '@gen3/core';
 import { FirstTimeModal } from './FirstTimeModal';
 import { SessionExpiredModal } from './SessionExpiredModal';
+import { FileInfoModal } from './FileInfoModal';
 import { ModalsConfig } from './types';
 import { defaultComposer } from 'default-composer';
 import { ContentType } from '../Content/TextContent';
@@ -39,6 +40,17 @@ const getModal = (
         res = (<SessionExpiredModal openModal={true} />);
       break;
       }
+    case Modals.FileInfoModal: {  // Handle the custom FileInfoModal
+      let fileData = {id: '123', name: 'file-name'}  // Pass the file data here
+      res = (
+        <FileInfoModal
+          openModal={true}
+          onClose={() => {}}
+          fileData={fileData}
+        />
+      );
+      break;
+    }
   }
   return res;
 };
