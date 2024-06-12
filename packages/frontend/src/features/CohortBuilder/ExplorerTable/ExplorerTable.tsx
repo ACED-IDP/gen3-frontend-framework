@@ -121,12 +121,6 @@ const ExplorerTable = ({ index, tableConfig }: ExplorerTableProps) => {
           : undefined,
     });
 
-  const handleRowClick = async (fileId: string) => {
-    // TODO: Fetch file data from the backend
-    console.info("DEBUG: fileId:", fileId);
-    coreDispatch(showModal({ modal: Modals.FileInfoModal }));
-  };
-
   const { totalRowCount, limitLabel } = useDeepCompareMemo(() => {
     const pageLimit =
       (tableConfig?.pageLimit && tableConfig?.pageLimit?.limit) ??
@@ -136,7 +130,7 @@ const ExplorerTable = ({ index, tableConfig }: ExplorerTableProps) => {
           pageLimit,
           data?.data._aggregation?.[index]._totalCount ?? pagination.pageSize,
         )
-      : data?.data._aggregation?.[index]._totalCount ?? pagination.pageSize;
+      : data?.data?._aggregation?.[index]._totalCount ?? pagination.pageSize;
     const limitLabel = tableConfig?.pageLimit
       ? tableConfig?.pageLimit?.label ?? DEFAULT_PAGE_LIMIT_LABEL
       : 'Rows per Page:';
@@ -162,6 +156,7 @@ const ExplorerTable = ({ index, tableConfig }: ExplorerTableProps) => {
    *   @see https://www.mantine-react-table.com/docs/guides/state-management#manage-individual-states-as-needed
    */
   const table = useMantineReactTable({
+    // @ts-ignore
     columns: cols,
     data: data?.data?.[index] ?? [],
     manualSorting: true,

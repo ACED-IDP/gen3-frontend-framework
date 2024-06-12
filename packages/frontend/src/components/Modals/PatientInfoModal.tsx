@@ -2,21 +2,21 @@ import React from 'react';
 import { Text } from '@mantine/core';
 import { BaseModal } from './BaseModal';  // Assuming BaseModal is available in the same directory
 
-interface FileInfoModalProps {
+interface PatientInfoModalProps {
   openModal: boolean;
-  fileData: {
+  patientData: {
     id: string;
     name: string;
-    // Add other file properties as needed
+    // Add other patient properties as needed
   } | null;
 }
 
-export const FileInfoModal: React.FC<FileInfoModalProps> = ({ openModal, fileData }) => {
+export const PatientInfoModal: React.FC<PatientInfoModalProps> = ({ openModal, patientData }) => {
   return (
     <BaseModal
       title={
         <Text size="lg" className="font-medium font-heading">
-          File Information
+          Patient Information
         </Text>
       }
       openModal={openModal}
@@ -26,11 +26,11 @@ export const FileInfoModal: React.FC<FileInfoModalProps> = ({ openModal, fileDat
       closeOnEscape={true}
     >
       <div className="border-y border-y-base-darker py-4 space-y-4 font-content">
-        {fileData ? (
+        {patientData ? (
           <>
-            <Text>ID: {fileData.id}</Text>
-            <Text>Name: {fileData.name}</Text>
-            {/* Add more file details here */}
+            <Text>ID: {patientData.id}</Text>
+            <Text>Name: {patientData.name}</Text>
+            {/* Add more patient details here */}
           </>
         ) : (
           <Text>Loading...</Text>

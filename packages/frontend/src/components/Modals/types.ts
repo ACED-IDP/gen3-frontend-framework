@@ -12,6 +12,10 @@ export interface FirstTimeModalConfig extends BaseModalConfig{
   expireDays?: number;
 }
 
+export interface FileInfoConfig extends BaseModalConfig {
+  expireDays?: number;
+  content: TextContentProps;
+}
 
 export interface ModalsConfig {
   systemUseModal?: FirstTimeModalConfig;

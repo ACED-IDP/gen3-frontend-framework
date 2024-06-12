@@ -12,6 +12,8 @@ export enum Modals {
   'NoAccessModal' = 'NoAccessModal',
   'CreateCredentialsAPIKeyModal' = 'CreateCredentialsAPIKeyModal',
   'GeneralErrorModal' = 'GeneralErrorModal',
+  'FileInfoModal' = 'FileInfoModal',
+  'PatientInfoModal' = 'PatientInfoModal',
 }
 
 // Type for the current modal in the store

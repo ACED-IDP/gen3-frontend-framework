@@ -13,6 +13,7 @@ import {
 import { FirstTimeModal } from './FirstTimeModal';
 import { SessionExpiredModal } from './SessionExpiredModal';
 import { FileInfoModal } from './FileInfoModal';
+import { PatientInfoModal } from './PatientInfoModal';
 import { ModalsConfig } from './types';
 import { defaultComposer } from 'default-composer';
 import { ContentType } from '../Content/TextContent';
@@ -37,16 +38,27 @@ const getModal = (
       break;
     }
     case Modals.SessionExpireModal: {
-        res = (<SessionExpiredModal openModal={true} />);
+      res = (<SessionExpiredModal openModal={true} />);
       break;
-      }
-    case Modals.FileInfoModal: {  // Handle the custom FileInfoModal
-      let fileData = {id: '123', name: 'file-name'}  // Pass the file data here
+    }
+    case Modals.FileInfoModal: {
+      // TODO: fetch File info from Guppy
+      let fileData = {id: '123', name: 'example'};
       res = (
         <FileInfoModal
           openModal={true}
-          onClose={() => {}}
           fileData={fileData}
+        />
+      );
+      break;
+    }
+    case Modals.PatientInfoModal: {
+      // TODO: fetch Patient info from Guppy
+      let patientData = {id: '123', name: 'example'};
+      res = (
+        <PatientInfoModal
+          openModal={true}
+          patientData={patientData}
         />
       );
       break;
