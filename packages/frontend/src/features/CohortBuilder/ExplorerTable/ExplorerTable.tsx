@@ -190,7 +190,13 @@ const ExplorerTable = ({ index, tableConfig }: ExplorerTableProps) => {
     mantineTableBodyRowProps: ({ row }) => ({
       onClick: (event) => {
         console.info(event, row.id);
-        coreDispatch(showModal({ modal: Modals.FileInfoModal }));
+        if (index === 'patient' || index === 'observation') {
+          // If in Patient Table, display patient info modal
+          coreDispatch(showModal({ modal: Modals.PatientInfoModal, message: row.getValue('id') }));
+        } else if (index === 'file') {
+          // If in File Table, display file info modal
+          coreDispatch(showModal({ modal: Modals.FileInfoModal, message: row.getValue('id') }));
+        }
       },
       sx: {
         cursor: 'pointer', //you might want to change the cursor too when adding an onClick

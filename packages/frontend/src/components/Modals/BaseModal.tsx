@@ -67,6 +67,7 @@ interface Props {
   onClose?: () => void;
   closeOnClickOutside?: boolean;
   closeOnEscape?: boolean;
+  centered?: boolean;
 }
 
 /**
@@ -81,6 +82,7 @@ interface Props {
  * @param onClose - Called when modal/drawer is closed
  * @param closeOnClickOutside - Determines whether the modal/drawer should be closed when user clicks on the overlay, true by default
  * @param closeOnEscape - Determines whether onClose should be called when user presses the escape key, true by default
+ * @param centered - Determines whether the modal should be centered, false by default
  * @see https://mantine.dev/core/modal/
  * @returns a mantine modal with a built in button for closing the modal
  */
@@ -95,6 +97,7 @@ export const BaseModal= ({
   onClose,
   closeOnClickOutside,
   closeOnEscape,
+  centered,
 }: Props) => {
   const dispatch = useCoreDispatch();
   return (
@@ -124,6 +127,7 @@ export const BaseModal= ({
       withCloseButton={withCloseButton ?? true}
       closeOnClickOutside={closeOnClickOutside ?? true}
       closeOnEscape={closeOnEscape ?? true}
+      centered={centered ?? false}
       size={size}
     >
       {children}

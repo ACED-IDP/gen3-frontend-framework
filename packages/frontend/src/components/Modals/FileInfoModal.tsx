@@ -20,10 +20,8 @@ export const FileInfoModal: React.FC<FileInfoModalProps> = ({ openModal, fileDat
         </Text>
       }
       openModal={openModal}
+      centered={true}
       size="60%"
-      withCloseButton={true}
-      closeOnClickOutside={true}
-      closeOnEscape={true}
     >
       <div className="border-y border-y-base-darker py-4 space-y-4 font-content">
         {fileData ? (
