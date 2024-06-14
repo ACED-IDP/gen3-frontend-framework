@@ -43,22 +43,18 @@ const getModal = (
     }
     case Modals.FileInfoModal: {
       // TODO: fetch File info from Guppy
-      let fileData = {id: '123', name: 'example'};
       res = (
         <FileInfoModal
           openModal={true}
-          fileData={fileData}
         />
       );
       break;
     }
     case Modals.PatientInfoModal: {
       // TODO: fetch Patient info from Guppy
-      let patientData = {id: '123', name: 'example'};
       res = (
         <PatientInfoModal
           openModal={true}
-          patientData={patientData}
         />
       );
       break;

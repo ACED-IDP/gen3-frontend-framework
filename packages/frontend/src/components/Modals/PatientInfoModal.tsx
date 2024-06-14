@@ -1,41 +1,47 @@
 import React from 'react';
-import { useCoreSelector, selectCurrentMessage, useGetRawDataAndTotalCountsQuery } from '@gen3/core';
 import { Text } from '@mantine/core';
 import { BaseModal } from './BaseModal';  // Assuming BaseModal is available in the same directory
+import { selectCurrentMessage, useCoreSelector } from '@gen3/core';
 
 interface PatientInfoModalProps {
   openModal: boolean;
-  patientData: {
+  fileData: {
     id: string;
     name: string;
-    // Add other patient properties as needed
+    // Add other file properties as needed
   } | null;
 }
 
-export const PatientInfoModal: React.FC<PatientInfoModalProps> = ({ openModal, patientData }) => {
+export const PatientInfoModal: React.FC<PatientInfoModalProps> = ({ openModal }) => {
+  const rowData = useCoreSelector((state) => selectCurrentMessage(state));
+  let row;
+  if (rowData) {
+    row = JSON.parse(rowData);
+  }
+
   return (
     <BaseModal
       title={
         <Text size="lg" className="font-medium font-heading">
-          Patient Information: {message}
+          Patient Information:
         </Text>
       }
       openModal={openModal}
-      centered={true}
       size="60%"
+      withCloseButton={true}
+      closeOnClickOutside={true}
+      closeOnEscape={true}
     >
       <div className="border-y border-y-base-darker py-4 space-y-4 font-content">
-        {patientData ? (
-          <>
-            <Text>ID: {patientData.id}</Text>
-            <Text>Name: {patientData.name}</Text>
-            {/* Add more patient details here */}
-          </>
+        {rowData ? (
+          Object.entries(row).map(([key, value]) => (
+            <Text key={key}>{`${key}: ${value}`}</Text>
+          ))
         ) : (
           <Text>Loading...</Text>
         )}
+      <p>Guppy Query/Results...</p>
       </div>
     </BaseModal>
   );
 };
-

@@ -190,12 +190,14 @@ const ExplorerTable = ({ index, tableConfig }: ExplorerTableProps) => {
     mantineTableBodyRowProps: ({ row }) => ({
       onClick: (event) => {
         console.info(event, row.id);
+        const rowData = JSON.stringify(row.original);
+        console.log('DEBUG: rowData', rowData);
         if (index === 'patient' || index === 'observation') {
           // If in Patient Table, display patient info modal
-          coreDispatch(showModal({ modal: Modals.PatientInfoModal, message: row.getValue('id') }));
+          coreDispatch(showModal({ modal: Modals.PatientInfoModal, message: rowData }));
         } else if (index === 'file') {
           // If in File Table, display file info modal
-          coreDispatch(showModal({ modal: Modals.FileInfoModal, message: row.getValue('id') }));
+          coreDispatch(showModal({ modal: Modals.FileInfoModal, message: rowData }));
         }
       },
       sx: {
