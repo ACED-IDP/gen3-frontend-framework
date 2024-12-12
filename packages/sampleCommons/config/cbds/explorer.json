@@ -66,9 +66,17 @@
   {
     "tabTitle": "Specimen",
     "charts": {
-      "processing": {
+      "tissue_type": {
         "chartType": "fullPie",
-        "title": "Processing Method"
+        "title": "Tissue Type"
+      },
+      "allocated_for_site": {
+        "chartType": "fullPie",
+        "title": "Site"
+      },
+      "histology": {
+        "chartType": "fullPie",
+        "title": "Histology"
       }
     },
     "filters": {
@@ -123,7 +131,6 @@
         "treatments",
         "sample_family_id",
         "treatments",
-        "tissue_type",
         "allocated_for_site",
         "package_recipient",
         "biopsy_event_tag",
@@ -182,8 +189,8 @@
           "fields": [
             "project_id",
             "contentType",
-            "specimen_identifier",
             "experimental_strategy",
+            "specimen_identifier",
             "enrollment_diagnosis",
             "allocated_for_site",
             "level",
@@ -213,16 +220,16 @@
         "title",
         "contentType",
         "size",
+        "experimental_strategy",
+        "enrollment_diagnosis",
+        "tissue_type",
         "md5",
         "date",
         "source_path",
         "specimen_identifier",
         "platform",
         "allocated_for_site",
-        "experimental_strategy",
         "level",
-        "tissue_type",
-        "enrollment_diagnosis",
         "molecule_type",
         "data_category",
         "project_id",
